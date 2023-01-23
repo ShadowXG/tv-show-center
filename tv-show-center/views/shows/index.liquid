@@ -1,23 +1,23 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <h2 class="display-6">All Examples</h2>
+    <h2 class="display-6">All TV Shows</h2>
     <div class="row">
-        {% for example in examples %}
+        {% for show in shows %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ example.title }}</h5>
+            <h5 class="card-header">{{ show.title }}</h5>
             <div class="card-body">
                 <h5 class="card-title">
-                    Ready?: {{ example.ready }}
+                    Description: {{ show.description }}
                 </h5>
                 <p class="card-text">
-                    Body: {{ example.body }}
+                    Genre: {{ show.genre }}
                 </p>
                 <p class="card-text">
-                    Amount: {{ example.amount }}
+                    Rating: {{ show.rating }}
                 </p>
-                <a href="/examples/{{ example.id }}" class="btn btn-info">
-                    View {{ example.title }}
+                <a href="/shows/{{ show.id }}" class="btn btn-info">
+                    View {{ show.title }}
                 </a>
             </div>
         </div>

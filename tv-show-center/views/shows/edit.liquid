@@ -1,0 +1,41 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-sm">
+    <form action="/shows?_method=PUT" method="POST">
+        <fieldset>
+            <legend>Edit TV Show</legend>
+            <label class="form-label">Title: </label>
+            <input 
+                type="text" 
+                name="title" 
+                placeholder="{{ show.title }}"
+                value="{{ show.title }}"
+                class="form-control"
+            >
+            <label class="form-label">Description:</label>
+            <input 
+                type="text" 
+                name="description" 
+                placeholder="{{ show.body }}" 
+                value="{{ show.body }}" 
+                class="form-control"
+            >
+            <label class="form-label">Genre:</label>
+            <input 
+                type="text" 
+                name="genre"
+                value="{{ show.genre }}"
+                class="form-control"
+            >
+            <label class="form-label">Rating:</label>
+            <input 
+                type="number" 
+                name="rating" 
+                value="{{ show.rating }}"
+                class="form-control"
+            >
+        </fieldset>
+        <input type="submit" value="Edit Show" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}
