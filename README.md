@@ -16,13 +16,53 @@ A place where you can add tv shows, comment on the shows, and give the shows a r
 
 ---
 
+## Route tables
+
+#### TV Shows
+
+| **URL**          | **HTTP Verb**|**Action**|
+|------------------|--------------|----------|
+| /shows/         | GET          | index  
+| /shows/:id      | GET          | show       
+| /shows/new      | GET          | new   
+| /shows          | POST         | create   
+| /shows/:id/edit | GET          | edit       
+| /shows/:id      | PATCH/PUT    | update    
+| /shows/:id      | DELETE       | destroy  
+
+#### Ratings BONUS
+
+| **URL**          | **HTTP Verb**|**Action**|
+|--------------------|--------------|----------|
+| /ratings/:showId | POST          | create  
+| /ratings/update/:showId/:ratingId      | PATCH/PUT         | update  
+
+#### Comments
+
+| **URL**          | **HTTP Verb**|**Action**|
+|--------------------|--------------|----------|
+| /comments/:showId | POST          | create  
+| /comments/delete/:showId/:commentId      | DELETE          | destroy       
+
+
+#### Users
+
+| **URL**          | **HTTP Verb**|**Action**|
+|------------------|--------------|----------|
+| /users/signup    | GET          | new  
+| /users/signup    | POST         | create  
+| /users/login     | GET          | login       
+| /users/login     | POST         | create       
+| /users/logout    | DELETE       | destroy 
+
+
 ### Wireframe
-![Alt text](project%20planning/TV%20Show%20Center.jpg)
+![Alt text](project-planning/TV%20Show%20Center.jpg)
 
 ---
 
 ### ERD (Entity Relationship Diagram)
-![Alt text](project%20planning/ERD.jpg)
+![Alt text](project-planning/ERD.jpg)
 
 ---
 
