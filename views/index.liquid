@@ -4,13 +4,13 @@
         <div class="h1 text-secondary-emphasis">Welcome to the</div>
         <div class="h1 text-danger-emphasis">TV Show Center!</div>
         {% if loggedIn %}
-                <a href="/shows" class="nav-link bg-light text-dark fs-3 mt-5">View All</a>
-                <a href="/shows/new" class="nav-link bg-light text-dark fs-3 mt-3">New</a>
-                <a href="/shows/mine" class="nav-link bg-light text-dark fs-3 mt-3">My shows</a>
-                <a href="/auth/logout" class="nav-link  bg-light text-dark fs-3 mt-3">Log Out</a>
+                <a href="/shows" type="button" class="btn btn-light fs-3 mt-5">View All</a>
+                <a href="/shows/new" type="button" class="btn btn-light fs-3 mt-3">New</a>
+                <a href="/shows/mine" type="button" class="btn btn-light fs-3 mt-3">My shows</a>
+                <a href="/auth/logout" type="button" class="nbtn btn-light fs-3 mt-3">Log Out</a>
         {% else %}
-                <a href="/auth/signup" class="nav-link bg-light text-dark fs-3 mt-5">Sign Up</a>
-                <a href="/auth/login" class="nav-link bg-light text-dark fs-3 mt-3">Sign In</a>
+                <a href="/auth/signup" type="button" class="btn btn-light fs-3 mt-5">Sign Up</a>
+                <a href="/auth/login" type="button" class="btn btn-light fs-3 mt-3">Sign In</a>
                 <p class="text-light mt-5">Welcome to the TV Show Center!</p>
                 <p class="text-light mt-1">Sign up to look at all the differents shows people have added.</p>
                 <p class="text-light mt-1">Give your own ratings, and enter a comment.</p>
