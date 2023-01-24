@@ -1,6 +1,9 @@
 // import dependencies
 const mongoose = require('./connection')
 
+// import comment schema
+const commentSchema = require('./comments')
+
 // import user model for populate
 const User = require('./user')
 
@@ -16,7 +19,8 @@ const tvShowSchema = new Schema(
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
-		}
+		},
+		comments: [commentSchema]
 	},
 	{ timestamps: true }
 )

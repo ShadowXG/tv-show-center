@@ -2,10 +2,9 @@
 {% block content %}
 <div class="container-md d-flex flex-column align-items-center">
     <article>
-        <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>
-       
+        <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>      
         <h2 class="text-light welcome app-title">{{ show.title }}</h2>
-        <div class="card float-left">{{show.genre}}</div>
+        <div class="card align-items-left">{{show.genre}}</div>
         <h3 class="text-light mt-5">                    
         {% if show.rating == 1 %}
             User Rating: &#11088
@@ -37,5 +36,38 @@
         {% endif %}
         </div>
     </article>
+    <hr>
+    <h4 class="text-light">Comments</h4>
+    <hr>
+    <div class="col-md-6">
+        <form action="/comment/{{ show.id }}" method="POST">
+            <fieldset>
+                <legend class="text-light align-items-center">Add Comment</legend>
+                <label class="form-label text-light">comment:</label>
+                <input type="text" name="comment" class="form-control mb-1">
+                <div class="d-flex flex-row">
+                    <span class="text-light mt-5">Rating:</span>
+                    <div class="commentrating mt-3 ms-3">
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+                    </div>
+                </div>	
+            </fieldset>
+            <input type="submit" class="btn btn-success mt-3" value="add comment">
+        </form>
+    </div>
+    <hr>
+    {% if show.comments.length > 0 %}
+        <div class="container-sm justify-content-center">
+            {% for comm in show.comments %}
+                {% render '../comment.liquid', comm: comm, userId: userId, show: show %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <small>no comments yet...</small>
+    {% endif %}
 </div>
 {% endblock %}

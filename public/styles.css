@@ -38,3 +38,29 @@ body {
 
 .starrating > input:hover ~ label
 { color: #ffca08 ;  } /* Set yellow color when star hover */
+
+.commentrating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.commentrating>input {
+    display: none;
+}
+
+.commentrating > label:before { 
+    content: "\2605"; /* Star */
+    font-size: 50px;
+}
+
+.commentrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.commentrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.commentrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
