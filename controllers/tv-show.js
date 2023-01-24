@@ -41,7 +41,7 @@ router.get('/mine', (req, res) => {
     const { username, userId, loggedIn } = req.session
 	Show.find({ owner: userId })
 		.then(shows => {
-			res.render('shows/index', { shows, username, loggedIn })
+			res.render('shows/mine', { shows, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
