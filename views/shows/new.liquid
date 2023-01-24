@@ -1,37 +1,41 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-sm">
+<div class="container-md d-flex flex-column w-50">
     <form action="/shows" method="POST">
         <fieldset>
-            <legend>Create New TV Show</legend>
-            <label class="form-label">Title: </label>
+            <div class="h1 text-danger-emphasis welcome app-title">TV Show Center!</div>
+            <legend class="text-light">Create New TV Show</legend>
+            <label class="form-label text-light">Title:</label>
             <input 
                 type="text" 
                 name="title" 
                 placeholder="enter show title"
                 class="form-control"
             >
-            <label class="form-label">Description:</label>
+            <label class="form-label text-light mt-3">Description:</label>
             <input 
                 type="text" 
                 name="description" 
                 placeholder="enter show description" 
                 class="form-control"
             >
-            <label class="form-label">genre:</label>
+            <label class="form-label text-light mt-3">Genre:</label>
             <input 
                 type="text" 
-                name="genre" 
+                name="genre"
+                placeholder="enter show genre" 
                 class="form-control"
             >
-            <label class="form-label">Rating:</label>
+            <label class="form-label text-light mt-3">Rating:</label>
             <input 
                 type="number" 
-                name="rating" 
+                name="rating"
+                placeholder="enter show rating" 
                 class="form-control"
             >
         </fieldset>
-        <input type="submit" value="Create New Show" class="btn btn-success">
+        <input type="submit" value="Create New Show" class="btn btn-success mt-3">
+        <a href="/" type="button" class="btn btn-warning mt-3">Cancel</a>
     </form>
 </div>
 {% endblock %}
