@@ -4,10 +4,11 @@
         <div class="h1 text-secondary-emphasis">Welcome to the</div>
         <div class="h1 text-danger-emphasis">TV Show Center!</div>
         {% if loggedIn %}
-                <a href="/shows" type="button" class="btn btn-light fs-3 mt-5">View All</a>
-                <a href="/shows/new" type="button" class="btn btn-light fs-3 mt-3">New</a>
+                <div class="text-info fs-3">{{ username }}</div>
+                <a href="/shows" type="button" class="btn btn-light fs-3 mt-5">View All Shows</a>
+                <a href="/shows/new" type="button" class="btn btn-light fs-3 mt-3">New Show</a>
                 <a href="/shows/mine" type="button" class="btn btn-light fs-3 mt-3">My shows</a>
-                <a href="/auth/logout" type="button" class="nbtn btn-light fs-3 mt-3">Log Out</a>
+                <a href="/auth/logout" type="button" class="btn btn-light fs-3 mt-3">Log Out</a>
         {% else %}
                 <a href="/auth/signup" type="button" class="btn btn-light fs-3 mt-5">Sign Up</a>
                 <a href="/auth/login" type="button" class="btn btn-light fs-3 mt-3">Sign In</a>

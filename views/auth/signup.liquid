@@ -1,16 +1,18 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<div class="container-sm">
+<div class="container-sm d-flex flex-column align-items-center welcome">
     <form action="/auth/signup" method="POST">
         <fieldset>
-            <legend>Sign Up Here!</legend>
-            <label class="form-label">Username: </label>
+            <h1 class=" text-danger-emphasis login-title">TV Show Center</h1>
+            <legend class="text-light mt-5">Sign Up Here!</legend>
+            <label class="form-label text-light">Username:</label>
             <input type="text" name="username" placeholder="username" class="form-control" required>
-            <label class="form-label">Password</label>
+            <label class="form-label text-light mt-3">Password:</label>
             <input type="password" name="password" placeholder="enter password" class="form-control" required>
         </fieldset>
-        <input type="submit" value="Create Account" class="btn btn-success">
+        <input type="submit" value="Create Account" class="btn btn-success mt-3">
+        <a href="/" type="button" class="btn btn-warning mt-3">Cancel</a>
     </form>
 </div>
 
