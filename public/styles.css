@@ -9,3 +9,32 @@ body {
 .app-title {
     text-align: center;
 }
+
+.starrating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.starrating>input {
+    display: none;
+}
+
+.starrating > label:before { 
+    content: "\2605"; /* Star */
+    margin: 2px;
+    font-size: 100px;
+    font-family: FontAwesome;
+    display: inline-block; 
+}
+
+.starrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */

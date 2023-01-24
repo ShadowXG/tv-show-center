@@ -8,14 +8,15 @@
         <div class="card" style="width: 18rem;">
             <h5 class="card-header">{{ show.title }}</h5>
             <div class="card-body">
-                <h5 class="card-title">
-                    Description: {{ show.description }}
-                </h5>
                 <p class="card-text">
                     Genre: {{ show.genre }}
                 </p>
                 <p class="card-text">
-                    Rating: {{ show.rating }}
+                    {% if show.rating <= 1 %}
+                        Rating: {{ show.rating }} &#11088
+                    {% else %}
+                        Rating: {{ show.rating }} &#11088s
+                    {% endif %}
                 </p>
                 <a href="/shows/{{ show.id }}" class="btn btn-info">
                     View {{ show.title }}

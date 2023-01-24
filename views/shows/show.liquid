@@ -2,15 +2,8 @@
 {% block content %}
 <div class="container-md">
     <article>
-        <h2>
-            {{ show.title }} -
-            {% if show.ready %}
-            Ready
-            {% else %}
-            Not Ready
-            {%endif%}
-        </h2>
-        <h3>Amount: {{ show.amount }}</h3>
+        <h2>{{ show.title }}</h2>
+        <h3>Genre: {{ show.test}}</h3>
         <h6>Body: {{ show.body }}</h6>
         {% if show.owner == userId %}
         <div class="btn-group">

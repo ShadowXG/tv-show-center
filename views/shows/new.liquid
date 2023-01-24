@@ -26,13 +26,16 @@
                 placeholder="enter show genre" 
                 class="form-control"
             >
-            <label class="form-label text-light mt-3">Rating:</label>
-            <input 
-                type="number" 
-                name="rating"
-                placeholder="enter show rating" 
-                class="form-control"
-            >
+            <span class = "text-light mt-5">Rating:</span>
+            <div class="container">
+                <div class="starrating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+                </div>
+            </div>	
         </fieldset>
         <input type="submit" value="Create New Show" class="btn btn-success mt-3">
         <a href="/" type="button" class="btn btn-warning mt-3">Cancel</a>
