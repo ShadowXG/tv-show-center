@@ -21,7 +21,7 @@
             No Rating
         {% endif %}
         </h3>
-        <div class="container-md d-flex flex-row align-items-center">
+        <div class="container-md d-flex flex-row justify-content-center">
         {% if show.owner == userId %}
             <a href="/shows/{{ show.id }}/edit" class="btn btn-primary">Edit</a>
             <form action="/shows/{{ show.id }}?_method=DELETE" method="POST">
@@ -68,7 +68,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <small>no comments yet...</small>
+        <small class="text-light">no comments yet...</small>
     {% endif %}
 </div>
 {% endblock %}
