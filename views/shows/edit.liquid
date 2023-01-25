@@ -1,41 +1,50 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-sm">
-    <form action="/shows?_method=PUT" method="POST">
+<div class="container-md d-flex flex-column w-50">
+    <form action="/shows/{{show.id}}?_method=PUT" method="POST">
         <fieldset>
-            <legend>Edit TV Show</legend>
-            <label class="form-label">Title: </label>
+            <div class="h1 text-danger-emphasis text-center welcome">TV Show Center!</div>
+            <legend class="text-light">Edit TV Show</legend>
+            <label class="form-label text-light">Title:</label>
             <input 
                 type="text" 
                 name="title" 
-                placeholder="{{ show.title }}"
-                value="{{ show.title }}"
+                placeholder="enter show title"
                 class="form-control"
+                value="{{ show.title }}"
+                required
             >
-            <label class="form-label">Description:</label>
+            <label class="form-label text-light mt-3">Description:</label>
             <input 
                 type="text" 
                 name="description" 
-                placeholder="{{ show.body }}" 
-                value="{{ show.body }}" 
+                placeholder="enter show description" 
                 class="form-control"
+                value="{{ show.description }}"
+                required
             >
-            <label class="form-label">Genre:</label>
+            <label class="form-label text-light mt-3">Genre:</label>
             <input 
                 type="text" 
                 name="genre"
+                placeholder="enter show genre" 
+                class="form-control"
                 value="{{ show.genre }}"
-                class="form-control"
+                required
             >
-            <label class="form-label">Rating:</label>
-            <input 
-                type="number" 
-                name="rating" 
-                value="{{ show.rating }}"
-                class="form-control"
-            >
+            <span class = "text-light mt-5">Rating:</span>
+            <div class="container">
+                <div class="starrating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+                </div>
+            </div>	
         </fieldset>
-        <input type="submit" value="Edit Show" class="btn btn-success">
+        <input type="submit" value="Edit Show" class="btn btn-success mt-3">
+        <a href="/shows/{{ show.id }}" type="button" class="btn btn-warning mt-3">Cancel</a>
     </form>
 </div>
 {% endblock %}
