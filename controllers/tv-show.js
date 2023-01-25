@@ -61,7 +61,6 @@ router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
 	Show.create(req.body)
 		.then(show => {
-			console.log('this was returned from create', show)
 			res.redirect('/shows')
 		})
 		.catch(error => {
@@ -100,10 +99,10 @@ router.put('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
 	const showId = req.params.id
 	Show.findById(showId)
+		.populate('owner', 'username')
 		.populate('comments.author', 'username')
 		.then(show => {
             const {username, loggedIn, userId} = req.session
-			console.log(show.comments)
 			res.render('shows/show', { show, username, loggedIn, userId })
 		})
 		.catch((error) => {

@@ -2,32 +2,33 @@
 {% block content %}
 <div class="container-md d-flex flex-column align-items-center">
     <article>
-        <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>      
-        <h2 class="text-light welcome app-title">{{ show.title }}</h2>
-        <div class="card align-items-left">{{show.genre}}</div>
-        <h3 class="text-light mt-5">                    
+        <div class="h1 text-danger-emphasis welcome text-center">TV Show Center!</div>      
+        <h2 class="text-light mt-5 text-center">{{ show.title }}</h2>
+        <h6 class="card mt-5">Description: {{ show.description }}</h6>
+        <div class="text-light text-center mt-3">Genre: {{show.genre}}</div>
+        <h3 class="text-light text-center mt-5 mb-5">                    
         {% if show.rating == 1 %}
-            User Rating: &#11088
+            {{ show.owner.username }}'s Rating: &#11088
         {% elsif show.rating == 2 %}
-            User Rating: &#11088 &#11088
+            {{ show.owner.username }}'s Rating: &#11088 &#11088
         {% elsif show.rating == 3 %}
-            User Rating: &#11088 &#11088 &#11088
+            {{ show.owner.username }}'s Rating: &#11088 &#11088 &#11088
         {% elsif show.rating == 4 %}
-            User Rating: &#11088 &#11088 &#11088 &#11088
+            {{ show.owner.username }}'s Rating: &#11088 &#11088 &#11088 &#11088
         {% elsif show.rating == 5 %}
-            User Rating: &#11088 &#11088 &#11088 &#11088 &#11088
+            {{ show.owner.username }}'s Rating: &#11088 &#11088 &#11088 &#11088 &#11088
         {% else %}
             No Rating
         {% endif %}
         </h3>
-        <h6 class="card mt-5">Description: {{ show.description }}</h6>
         <div class="container-md d-flex flex-row align-items-center">
         {% if show.owner == userId %}
             <a href="/shows/{{ show.id }}/edit" class="btn btn-primary">Edit</a>
             <form action="/shows/{{ show.id }}?_method=DELETE" method="POST">
                 <input type="submit" value="Delete" class="btn btn-danger ms-2">
             </form>
-                <a href="/shows/mine" class="btn btn-warning ms-2">Back</a>
+                <a href="/shows/mine" class="btn btn-warning ms-2">My Shows</a>
+                <a href="/shows" class="btn btn-warning ms-2">All Shows</a>
                 <a href="/" class="btn btn-warning ms-2">Home</a>
         {% else %}
             <a href="/shows" class="btn btn-warning ms-2">All Shows</a>

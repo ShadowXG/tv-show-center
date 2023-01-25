@@ -2,8 +2,22 @@
     <div class="card mb-4">
         <div class="card-body">
             <p>{{ comm.comment }}</p>
-            <div class="d-flex justify-content-between">
-                <small>author: {{ comm.author.username }}</small>
+            <h3 class="text-info">                    
+                {% if comm.rating == 1 %}
+                    {{ comm.author.username }}'s Rating: &#11088
+                {% elsif comm.rating == 2 %}
+                    {{ comm.author.username }}'s Rating: &#11088 &#11088
+                {% elsif comm.rating == 3 %}
+                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088
+                {% elsif comm.rating == 4 %}
+                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088 &#11088
+                {% elsif comm.rating == 5 %}
+                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088 &#11088 &#11088
+                {% else %}
+                    No Rating
+                {% endif %}
+            </h3>
+            <div class="d-flex flex-row-reverse">
                 {% if comm.author == userId %}
                     <form action="/comments/delete/{{ show.id }}/{{ comm.id }}?_method=DELETE" method="POST">
                         <input class="btn btn-danger" type="submit" value="X">
