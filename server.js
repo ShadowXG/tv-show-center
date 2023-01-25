@@ -6,6 +6,7 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const ShowRouter = require('./controllers/tv-show')
 const CommentRouter = require('./controllers/comments')
+const ReplyRouter = require('./controllers/replies')
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
@@ -24,6 +25,7 @@ middleware(app)
 
 app.use('/auth', UserRouter)
 app.use('/comments', CommentRouter)
+app.use('/replies', ReplyRouter)
 app.use('/shows', ShowRouter)
 
 app.get('/', (req, res) => {

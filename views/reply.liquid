@@ -1,24 +1,10 @@
 {% block content %}
     <div class="card mb-2">
         <div class="card-body">
-            <p>{{ comm.comment }}</p>
-            <h5 class="text-info">                    
-                {% if comm.rating == 1 %}
-                    {{ comm.author.username }}'s Rating: &#11088
-                {% elsif comm.rating == 2 %}
-                    {{ comm.author.username }}'s Rating: &#11088 &#11088
-                {% elsif comm.rating == 3 %}
-                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088
-                {% elsif comm.rating == 4 %}
-                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088 &#11088
-                {% elsif comm.rating == 5 %}
-                    {{ comm.author.username }}'s Rating: &#11088 &#11088 &#11088 &#11088 &#11088
-                {% else %}
-                    Author: {{ comm.author.username }}
-                {% endif %}
-            </h5>
+            <p>{{ reply.reply }}</p>
+            <h5 class="text-info">Author: {{ comm.author.username }}</h5>
             <div class="d-flex flex-row-reverse">
-                {% if comm.author == userId %}
+                {% if reply.author == userId %}
                     <form action="/comments/delete/{{ show.id }}/{{ comm.id }}?_method=DELETE" method="POST">
                         <input class="btn btn-danger" type="submit" value="X">
                     </form>

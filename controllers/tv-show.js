@@ -56,8 +56,6 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
-	req.body.ready = req.body.ready === 'on' ? true : false
-
 	req.body.owner = req.session.userId
 	Show.create(req.body)
 		.then(show => {
@@ -84,8 +82,6 @@ router.get('/:id/edit', (req, res) => {
 // update route
 router.put('/:id', (req, res) => {
 	const showId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
-
 	Show.findByIdAndUpdate(showId, req.body, { new: true })
 		.then(show => {
 			res.redirect(`/shows/${show.id}`)

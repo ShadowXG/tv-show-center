@@ -3,27 +3,20 @@ const mongoose = require('./connection')
 
 const User = require('./user')
 
-const replySchema = require('./replies')
-
 const { Schema } = mongoose
 
 // comment schema
-const commentSchema = new Schema(
+const replySchema = new Schema(
     {
-        comment: {
+        reply: {
             type: String,
             required: true
-        },
-        rating: {
-            type: Number,
-            required: false
         },
         author: {
             type: Schema.Types.ObjectId,
             ref: 'User',
             required: true
         },
-        reply: [replySchema]
     }, 
     { timestamps: true }
 )
@@ -31,4 +24,4 @@ const commentSchema = new Schema(
 /////////////////////////////////
 // Export our Schema
 /////////////////////////////////
-module.exports = commentSchema
+module.exports = replySchema
