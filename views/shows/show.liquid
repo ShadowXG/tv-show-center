@@ -40,7 +40,7 @@
     <h4 class="text-light">Comments</h4>
     <hr>
     <div class="col-md-6">
-        <form action="/comment/{{ show.id }}" method="POST">
+        <form action="/comments/{{ show.id }}" method="POST">
             <fieldset>
                 <legend class="text-light align-items-center">Add Comment</legend>
                 <label class="form-label text-light">comment:</label>
@@ -63,7 +63,7 @@
     {% if show.comments.length > 0 %}
         <div class="container-sm justify-content-center">
             {% for comm in show.comments %}
-                {% render '../comment.liquid', comm: comm, userId: userId, show: show %}
+                {% render '../comment.liquid', comm: comm, userId: userId, show: show, username: username %}
             {% endfor %}
         </div>
     {% else %}

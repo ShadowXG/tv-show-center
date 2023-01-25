@@ -32,6 +32,8 @@ router.post('/:showId', (req,res) => {
         // find the specific show
         Show.findById(showId)
             .then(show => {
+                console.log('testing the comment')
+                console.log(theComment.username)
                 show.comments.push(theComment)
                 return show.save()
             })
