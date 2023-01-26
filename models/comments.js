@@ -23,7 +23,7 @@ const commentSchema = new Schema(
             ref: 'User',
             required: true
         },
-        reply: [replySchema]
+        replies: [replySchema]
     }, 
     { timestamps: true }
 )

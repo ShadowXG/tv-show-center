@@ -26,9 +26,9 @@
             </div>
         </div>
     </div>
-    {% if comm.reply.length > 0 %}
+    {% if comm.replies.length > 0 %}
         <div class="container-sm justify-content-center">
-            {% for reply in comm.reply %}
+            {% for reply in comm.replies %}
                 {% render './reply.liquid', reply: reply, userId: userId, show: show, username: username %}
             {% endfor %}
         </div>

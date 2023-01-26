@@ -97,6 +97,8 @@ router.get('/:id', (req, res) => {
 	Show.findById(showId)
 		.populate('owner', 'username')
 		.populate('comments.author', 'username')
+		.populate('comments.replies', 'username')
+		.populate('comments.replies.author', 'username')
 		.then(show => {
             const {username, loggedIn, userId} = req.session
 			res.render('shows/show', { show, username, loggedIn, userId })

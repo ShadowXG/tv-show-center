@@ -17,11 +17,12 @@ router.post('/:showId/:commId', (req,res) => {
         console.log(theReply)
         // find the specific show
         Show.findById(showId)
-            .then((show, comment) => {
+            .then(show => {
                 // find the comment
                 const theComment = show.comments.id(commId)
                 // push the reply
-                theComment.reply.push(theReply)
+                theComment.replies.push(theReply)
+                console.log(theComment.replies)
                 // save the comment
                 return show.save()
             })

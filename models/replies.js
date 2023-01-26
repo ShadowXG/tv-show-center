@@ -1,11 +1,12 @@
 // import dependencies
+const { trusted } = require('mongoose')
 const mongoose = require('./connection')
 
 const User = require('./user')
 
 const { Schema } = mongoose
 
-// comment schema
+// reply schema
 const replySchema = new Schema(
     {
         reply: {

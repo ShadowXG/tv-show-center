@@ -2,7 +2,7 @@
     <div class="card mb-2">
         <div class="card-body">
             <p>{{ reply.reply }}</p>
-            <h5 class="text-info">Author: {{ comm.author.username }}</h5>
+            <h5 class="text-info">Author: {{ reply.author.username }}</h5>
             <div class="d-flex flex-row-reverse">
                 {% if reply.author == userId %}
                     <form action="/comments/delete/{{ show.id }}/{{ comm.id }}?_method=DELETE" method="POST">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    {% if comm.reply.length > 0 %}
+    {% if comm.replies.length > 0 %}
         <div class="container-sm justify-content-center">
             {% for reply in comm.reply %}
                 {% render './reply.liquid', reply: reply, userId: userId, show: show, username: username %}
