@@ -101,6 +101,8 @@ router.get('/:id', (req, res) => {
 		.populate('comments.replies.author', 'username')
 		.then(show => {
             const {username, loggedIn, userId} = req.session
+			console.log('This is the show\n', show)
+			console.log('These are the replies\n', show.comments[0].replies)
 			res.render('shows/show', { show, username, loggedIn, userId })
 		})
 		.catch((error) => {

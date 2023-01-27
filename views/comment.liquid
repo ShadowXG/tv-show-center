@@ -1,5 +1,5 @@
 {% block content %}
-    <div class="card mb-2">
+    <div class="card mb-2 container-sm justify-content-center" style="width: 30rem;">
         <div class="card-body">
             <p>{{ comm.comment }}</p>
             <h5 class="text-info">                    
@@ -17,6 +17,17 @@
                     Author: {{ comm.author.username }}
                 {% endif %}
             </h5>
+            <form action="/replies/{{ show.id }}/{{ comm.id }}" method="POST">
+            <input 
+                type="text" 
+                name="reply" 
+                placeholder="Reply" 
+                class="form-control mb-1"
+                style="border: 1px solid black;"
+                required
+            >
+            <input type="submit" class="btn btn-success mb-2" value="add reply">
+            </form>
             <div class="d-flex flex-row-reverse">
                 {% if comm.author == userId %}
                     <form action="/comments/delete/{{ show.id }}/{{ comm.id }}?_method=DELETE" method="POST">
@@ -27,21 +38,10 @@
         </div>
     </div>
     {% if comm.replies.length > 0 %}
-        <div class="container-sm justify-content-center">
+        <div class="container-sm justify-content-center" style="width: 30rem;">
             {% for reply in comm.replies %}
-                {% render './reply.liquid', reply: reply, userId: userId, show: show, username: username %}
+                {% render './reply.liquid', reply: reply, comm: comm, userId: userId, show: show, username: username %}
             {% endfor %}
         </div>
     {% endif %} 
-    <form action="/replies/{{ show.id }}/{{ comm.id }}" method="POST">
-        <label class="form-label text-light">Reply:</label>
-            <input 
-                type="text" 
-                name="reply" 
-                placeholder="Reply" 
-                class="form-control mb-1"
-                required
-            >
-            <input type="submit" class="btn btn-success mb-2" value="add reply">
-    </form>
 {% endblock %}

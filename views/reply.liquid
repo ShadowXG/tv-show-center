@@ -3,31 +3,34 @@
         <div class="card-body">
             <p>{{ reply.reply }}</p>
             <h5 class="text-info">Author: {{ reply.author.username }}</h5>
+
+        
+    
+            {% if comm.replies.length > 0 %}
+                <div class="container-sm justify-content-center">
+                    {% for reply in comm.reply %}
+                        {% render './reply.liquid', reply: reply, userId: userId, show: show, username: username %}
+                    {% endfor %}
+                </div>
+            {% endif %} 
+            <form action="/replies/{{ show.id }}/{{ comm.id }}" method="POST">
+                    <input 
+                        type="text" 
+                        name="reply" 
+                        placeholder="Reply" 
+                        class="form-control mb-1"
+                        style="border: 1px solid black;"
+                        required
+                    >
+                    <input type="submit" class="btn btn-success mb-2" value="add reply">
+            </form>
             <div class="d-flex flex-row-reverse">
                 {% if reply.author == userId %}
-                    <form action="/comments/delete/{{ show.id }}/{{ comm.id }}?_method=DELETE" method="POST">
-                        <input class="btn btn-danger" type="submit" value="X">
+                    <form action="/replies/delete/{{ show.id }}/{{ reply.id }}?_method=DELETE" method="POST">
+                        <input class="btn btn-danger" type="submit" value="Y">
                     </form>
                 {% endif %}
             </div>
         </div>
     </div>
-    {% if comm.replies.length > 0 %}
-        <div class="container-sm justify-content-center">
-            {% for reply in comm.reply %}
-                {% render './reply.liquid', reply: reply, userId: userId, show: show, username: username %}
-            {% endfor %}
-        </div>
-    {% endif %} 
-    <form action="/replies/{{ show.id }}/{{ comm.id }}" method="POST">
-        <label class="form-label text-light">Reply:</label>
-            <input 
-                type="text" 
-                name="reply" 
-                placeholder="Reply" 
-                class="form-control mb-1"
-                required
-            >
-            <input type="submit" class="btn btn-success mb-2" value="add reply">
-    </form>
 {% endblock %}
