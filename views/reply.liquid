@@ -3,9 +3,6 @@
         <div class="card-body">
             <p>{{ reply.reply }}</p>
             <h5 class="text-info">Author: {{ reply.author.username }}</h5>
-
-        
-    
             {% if comm.replies.length > 0 %}
                 <div class="container-sm justify-content-center">
                     {% for reply in comm.reply %}
@@ -27,7 +24,7 @@
             <div class="d-flex flex-row-reverse">
                 {% if reply.author == userId %}
                     <form action="/replies/delete/{{ show.id }}/{{ reply.id }}?_method=DELETE" method="POST">
-                        <input class="btn btn-danger" type="submit" value="Y">
+                        <input class="btn btn-danger" type="submit" value="X">
                     </form>
                 {% endif %}
             </div>

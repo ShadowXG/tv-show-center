@@ -101,8 +101,8 @@ router.get('/:id', (req, res) => {
 		.populate('comments.replies.author', 'username')
 		.then(show => {
             const {username, loggedIn, userId} = req.session
-			console.log('This is the show\n', show)
-			console.log('These are the replies\n', show.comments[0].replies)
+			// console.log('This is the show\n', show)
+			// console.log('These are the replies\n', show.comments[0].replies)
 			res.render('shows/show', { show, username, loggedIn, userId })
 		})
 		.catch((error) => {
@@ -113,9 +113,16 @@ router.get('/:id', (req, res) => {
 // delete route
 router.delete('/:id', (req, res) => {
 	const showId = req.params.id
-	Show.findByIdAndRemove(showId)
+	Show.findById(showId)
 		.then(show => {
-			res.redirect('/shows')
+			if (show.owner == req.session.userId) {
+				return show.deleteOne()
+			} else {
+				res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20show`)
+			}
+		})
+		.then(() => {
+			res.redirect(`/shows/mine`)
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
