@@ -3,11 +3,11 @@
 <div class="d-flex flex-column align-items-center">
     <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>
     <h2 class="display-6 text-light">All TV Shows</h2>
-    <div class="row">
+    <div class="row" style="width: 100rem;">
         {% for show in shows %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20rem;">
             <h5 class="card-header">{{ show.title }}</h5>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
                 <p class="card-text">
                     Genre: {{ show.genre }}
                 </p>
@@ -26,7 +26,7 @@
                         No Rating
                     {% endif %}
                 </p>
-                <a href="/shows/{{ show.id }}" class="btn btn-info">
+                <a href="/shows/{{ show.id }}" class="btn btn-info mt-auto align-content-end">
                     View {{ show.title }}
                 </a>
             </div>

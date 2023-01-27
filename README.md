@@ -30,29 +30,27 @@ A place where you can add tv shows, comment on the shows, and give the shows a r
 | /shows/:id      | PATCH/PUT    | update    
 | /shows/:id      | DELETE       | destroy  
 
-#### Ratings BONUS
-
-| **URL**          | **HTTP Verb**|**Action**|
-|--------------------|--------------|----------|
-| /ratings/:showId | POST          | create  
-| /ratings/update/:showId/:ratingId      | PATCH/PUT         | update  
-
 #### Comments
 
 | **URL**          | **HTTP Verb**|**Action**|
 |--------------------|--------------|----------|
 | /comments/:showId | POST          | create  
-| /comments/delete/:showId/:commentId      | DELETE          | destroy       
+| /comments/delete/:showId/:commentId      | DELETE          | destroy 
+
+#### Replies
+
+| **URL**          | **HTTP Verb**|**Action**|
+|--------------------|--------------|----------|
+| /replies/:showId/:commentId    | POST          | create  
+| /replies/delete/:showId/:replyId     | DELETE          | destroy 
 
 
 #### Users
 
 | **URL**          | **HTTP Verb**|**Action**|
 |------------------|--------------|----------|
-| /users/signup    | GET          | new  
-| /users/signup    | POST         | create  
-| /users/login     | GET          | login       
-| /users/login     | POST         | create       
+| /users/signup    | GET          | create  
+| /users/login     | GET          | create             
 | /users/logout    | DELETE       | destroy 
 
 
