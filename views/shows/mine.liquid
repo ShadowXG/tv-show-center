@@ -3,14 +3,12 @@
 <div class="d-flex flex-column align-items-center">
     <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>
     <h2 class="display-6 text-light">My TV Shows</h2>
-    <div class="row">
+    <div class="row" style="max-width: 100rem;">
         {% for show in shows %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20rem;">
             <h5 class="card-header">{{ show.title }}</h5>
             <div class="card-body">
-                <p class="card-text">
-                    Genre: {{ show.genre }}
-                </p>
+                <p class="card-text">For description and genres please view the show.</p>
                 <p class="card-text">
                     {% if show.rating == 1 %}
                         User Rating: &#11088

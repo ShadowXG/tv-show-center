@@ -13,8 +13,8 @@ const { Schema, model } = mongoose
 const tvShowSchema = new Schema(
 	{
 		title: { type: String, required: true },
-		description: { type: String, required: true },
-        genre: { type: String, required: true },
+		description: { type: String, required: false },
+        genre: [{ type: String, required: false }],
 		rating: { type: Number, required: true },
 		owner: {
 			type: Schema.Types.ObjectID,

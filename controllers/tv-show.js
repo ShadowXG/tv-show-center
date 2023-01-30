@@ -1,5 +1,7 @@
 // Import Dependencies
 const express = require('express')
+const axios = require('axios')
+require('dotenv').config()
 const Show = require('../models/tv-show')
 
 // Create router
@@ -22,12 +24,12 @@ router.use((req, res, next) => {
 // Routes
 
 // index ALL
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 	Show.find({})
-		.then(shows => {
+		.then(async shows => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			
+
 			res.render('shows/index', { shows, username, loggedIn })
 		})
 		.catch(error => {
@@ -39,6 +41,7 @@ router.get('/', (req, res) => {
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
+	console.log(req.session)
 	Show.find({ owner: userId })
 		.then(shows => {
 			res.render('shows/mine', { shows, username, loggedIn })
@@ -55,16 +58,24 @@ router.get('/new', (req, res) => {
 })
 
 // create -> POST route that actually calls the db and makes a new document
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	req.body.owner = req.session.userId
-	Show.create(req.body)
+	console.log('testing')
+	await axios(`${process.env.SEARCH_ONE_URL}${req.body.title}`)
 		.then(show => {
-			res.redirect('/shows')
+			console.log(show.data)
+			Show.create(req.body)
+				.then(show => {
+					res.redirect(`/shows/${show.id}`)
+				})
+				.catch(() => {
+					res.redirect(`/error?error=${error}`)
+				})	
 		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+		.catch((error) => {
+			res.redirect(`/error?error=This%20show%20does%20not%20exist!`)
+		})	
+	})
 
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
@@ -92,15 +103,24 @@ router.put('/:id', (req, res) => {
 })
 
 // show route
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
 	const showId = req.params.id
 	Show.findById(showId)
 		.populate('owner', 'username')
 		.populate('comments.author', 'username')
 		.populate('comments.replies', 'username')
 		.populate('comments.replies.author', 'username')
-		.then(show => {
+		.then(async show => {
             const {username, loggedIn, userId} = req.session
+
+			// console.log(process.env.WATCHMODE_SEARCH_URL)
+			const showInfo = await axios(`${process.env.SEARCH_ONE_URL}${show.title}`)
+			// console.log('Show Search summary', showInfo.data)
+			show.description = showInfo.data.summary
+			// console.log(showSearch.data.genres)
+			show.genre = showInfo.data.genres
+			// console.log(show.genre)
+
 			// console.log('This is the show\n', show)
 			// console.log('These are the replies\n', show.comments[0].replies)
 			res.render('shows/show', { show, username, loggedIn, userId })
