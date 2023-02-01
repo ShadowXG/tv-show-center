@@ -126,17 +126,12 @@ router.get('/:id', async (req, res) => {
 		.populate('comments.replies.author', 'username')
 		.then(async show => {
             const {username, loggedIn, userId} = req.session
-
-			// console.log(process.env.WATCHMODE_SEARCH_URL)
+			// find the show by title
 			const showInfo = await axios(`${process.env.SEARCH_ONE_URL}${show.title}`)
-			// console.log('Show Search summary', showInfo.data)
+			// set the description
 			show.description = showInfo.data.summary
-			// console.log(showSearch.data.genres)
+			// set the genres
 			show.genre = showInfo.data.genres
-			// console.log(show.genre)
-
-			// console.log('This is the show\n', show)
-			// console.log('These are the replies\n', show.comments[0].replies)
 			res.render('shows/show', { show, username, loggedIn, userId })
 		})
 		.catch((error) => {

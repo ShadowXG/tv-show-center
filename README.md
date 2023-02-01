@@ -1,5 +1,16 @@
-# TV Show app
+# TV Show Center
 A place where you can add tv shows, comment on the shows, and give the shows a rating
+
+---
+
+# Technologies Used
+- Javascript
+- Mongoose
+- CSS
+- Liquid
+- Bootstrap
+- Axios
+- Express
 
 ---
 
@@ -53,6 +64,7 @@ A place where you can add tv shows, comment on the shows, and give the shows a r
 | /users/login     | GET          | create             
 | /users/logout    | DELETE       | destroy 
 
+---
 
 ### Wireframe
 ![Alt text](project-planning/TV%20Show%20Center.jpg)
@@ -67,7 +79,9 @@ A place where you can add tv shows, comment on the shows, and give the shows a r
 ### Stuff I hope to add
 - An average rating/ star rating average from users
 - The ability to favorite shows and display those in a list
+
 ---
+
 ### Need to do research to do these
 - incorporate pictures somehow
 - Likes on comments (this will probably take too long)
