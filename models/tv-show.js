@@ -4,6 +4,9 @@ const mongoose = require('./connection')
 // import comment schema
 const commentSchema = require('./comments')
 
+// import favorite schema
+// const favoriteSchema = require('./favorites')
+
 // import user model for populate
 const User = require('./user')
 
@@ -20,7 +23,8 @@ const tvShowSchema = new Schema(
 			type: Schema.Types.ObjectID,
 			ref: 'User',
 		},
-		comments: [commentSchema]
+		comments: [commentSchema],
+		favorites: [{ favShow: String }]
 	},
 	{ timestamps: true }
 )

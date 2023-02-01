@@ -2,12 +2,12 @@
 {% block content %}
 <div class="d-flex flex-column align-items-center">
     <div class="h1 text-danger-emphasis welcome">TV Show Center!</div>
-    <h2 class="display-6 text-light">My TV Shows</h2>
+    <h2 class="display-6 text-light">Favorite TV Shows</h2>
     <div class="row" style="max-width: 100rem;">
         {% for show in shows %}
         <div class="card" style="width: 20rem;">
             <h5 class="card-header">{{ show.title }}</h5>
-            <div class="card-body d-flex flex-column">
+            <div class="card-body">
                 <p class="card-text">For description and genres please view the show.</p>
                 <p class="card-text">
                     {% if show.rating == 1 %}
@@ -24,7 +24,7 @@
                         No Rating
                     {% endif %}
                 </p>
-                <a href="/shows/{{ show.id }}" class="btn btn-info mt-auto align-content-end">
+                <a href="/shows/{{ show.id }}" class="btn btn-info">
                     View {{ show.title }}
                 </a>
             </div>

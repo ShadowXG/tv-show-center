@@ -51,6 +51,20 @@ router.get('/mine', (req, res) => {
 		})
 })
 
+// index that shows only the user's shows
+router.get('/favorites', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	console.log(req.session)
+	Show.find({ favorites: userId })
+		.then(shows => {
+			res.render('shows/favorites', { shows, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
